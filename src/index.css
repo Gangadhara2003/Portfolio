@@ -1,0 +1,227 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Modern Portfolio Design System - Dark theme with elegant gradients and typography */
+
+@layer base {
+  :root {
+    /* Dark theme colors */
+    --background: 220 27% 8%;
+    --foreground: 210 40% 98%;
+
+    --card: 220 25% 10%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 220 25% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 28 100% 65%;
+    --primary-foreground: 220 27% 8%;
+
+    --secondary: 220 15% 15%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 15% 15%;
+    --muted-foreground: 217 10% 65%;
+
+    --accent: 28 100% 65%;
+    --accent-foreground: 220 27% 8%;
+
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 15%;
+    --ring: 28 100% 65%;
+
+    --radius: 12px;
+
+    /* Portfolio specific design tokens */
+    --hero-gradient: linear-gradient(135deg, hsl(220 27% 8%) 0%, hsl(230 35% 12%) 50%, hsl(240 25% 16%) 100%);
+    --card-gradient: linear-gradient(135deg, hsl(220 25% 10%) 0%, hsl(225 20% 12%) 100%);
+    --accent-gradient: linear-gradient(135deg, hsl(28 100% 65%) 0%, hsl(35 100% 70%) 100%);
+    --text-gradient: linear-gradient(135deg, hsl(210 40% 98%) 0%, hsl(217 10% 85%) 100%);
+    
+    /* Shadows and glows */
+    --shadow-soft: 0 4px 20px -2px hsl(220 27% 4% / 0.3);
+    --shadow-medium: 0 8px 40px -4px hsl(220 27% 4% / 0.4);
+    --shadow-strong: 0 20px 60px -10px hsl(220 27% 4% / 0.5);
+    --glow-accent: 0 0 40px hsl(28 100% 65% / 0.3);
+    
+    /* Animation values */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    
+    /* Typography scale */
+    --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Light theme - keeping minimal for this dark-themed portfolio */
+  .light {
+    --background: 210 40% 98%;
+    --foreground: 220 27% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 27% 8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    background: var(--hero-gradient);
+    min-height: 100vh;
+    font-family: var(--font-body);
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom typography */
+  .text-gradient {
+    background: var(--text-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-accent-gradient {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Custom animations */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-strong);
+  }
+
+  .hover-glow:hover {
+    box-shadow: var(--glow-accent);
+  }
+
+  /* Card styles */
+  .portfolio-card {
+    background: var(--card-gradient);
+    border: 1px solid hsl(var(--border));
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-smooth);
+  }
+
+  .portfolio-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-medium);
+    border-color: hsl(var(--accent) / 0.3);
+  }
+
+  /* Button styles */
+  .btn-primary {
+    background: var(--accent-gradient);
+    color: hsl(var(--primary-foreground));
+    border: none;
+    transition: var(--transition-smooth);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--glow-accent);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    border: 1px solid hsl(var(--accent));
+    color: hsl(var(--accent));
+    transition: var(--transition-smooth);
+  }
+
+  .btn-secondary:hover {
+    background: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Section spacing */
+@layer utilities {
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .container-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+}
