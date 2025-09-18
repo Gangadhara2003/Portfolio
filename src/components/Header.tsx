@@ -43,7 +43,7 @@ const Header = () => {
                 {item.label}
               </a>
             ))}
-            <a href="https://drive.google.com/file/d/1ZADTI-yy7RskItqA77mRj2PejsptIi2b/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+            <a href="https://drive.google.com/file/d/1nxGMG-6s44semK_DePP0FCz0Vy0yeE2M/view?usp=sharing" target="_blank" rel="noopener noreferrer">
               <Button variant="outline" size="sm" className="btn-secondary">
                 Resume
               </Button>
@@ -75,7 +75,7 @@ const Header = () => {
                   {item.label}
                 </a>
               ))}
-              <a href="https://drive.google.com/file/d/1ZADTI-yy7RskItqA77mRj2PejsptIi2b/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+              <a href="https://drive.google.com/file/d/1nxGMG-6s44semK_DePP0FCz0Vy0yeE2M/view?usp=sharing" target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" size="sm" className="btn-secondary w-fit">
                   Resume
                 </Button>
