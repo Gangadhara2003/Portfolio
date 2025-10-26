@@ -3,7 +3,7 @@ import { Code2, Database, Globe, Lightbulb } from 'lucide-react';
 const About = () => {
   const skills = [
     { name: 'Java & Spring Boot', level: 90 },
-    { name: 'React & JavaScript', level: 85 },
+    { name: 'React & JavaScript', level: 90 },
     { name: 'Database Design', level: 80 },
     { name: 'System Architecture', level: 75 },
   ];

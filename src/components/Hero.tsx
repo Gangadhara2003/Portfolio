@@ -81,12 +81,12 @@ const Hero = () => {
             
             {/* Floating Elements */}
             <div className="absolute -top-4 -right-4 portfolio-card rounded-lg p-4 animate-slide-up">
-              <div className="text-accent font-bold text-xl">7.6</div>
+              <div className="text-accent font-bold text-xl">7.5</div>
               <div className="text-sm text-muted-foreground">CGPA</div>
             </div>
             
             <div className="absolute -bottom-4 -left-4 portfolio-card rounded-lg p-4 animate-slide-up">
-              <div className="text-accent font-bold text-xl">Java</div>
+              <div className="text-accent font-bold text-xl">React and Java</div>
               <div className="text-sm text-muted-foreground">Expert</div>
             </div>
           </div>

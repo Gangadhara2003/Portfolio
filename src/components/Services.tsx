@@ -18,13 +18,13 @@ const Services = () => {
       icon: <Globe className="text-accent" size={40} />,
       title: 'Frontend Development',
       description: 'Modern, responsive user interfaces with React, JavaScript, and contemporary design principles.',
-      technologies: ['React', 'HTML5', 'CSS3', 'Responsive Design'],
+      technologies: ['React', 'HTML5', 'Tailwind CSS', 'Responsive Design'],
     },
     {
       icon: <Smartphone className="text-accent" size={40} />,
       title: 'API Integration',
       description: 'Third-party service integration, API development, and real-time data processing solutions.',
-      technologies: ['REST APIs', 'Google APIs', 'JSON', 'AJAX'],
+      technologies: ['REST APIs', 'Google APIs', 'JSON'],
     },
   ];
 

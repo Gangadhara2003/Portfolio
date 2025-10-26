@@ -22,7 +22,7 @@ const Stats = () => {
     },
     {
       icon: <BookOpen className="text-accent" size={32} />,
-      number: '7.6',
+      number: '7.5',
       label: 'CGPA',
       description: 'Academic excellence maintained',
     },
