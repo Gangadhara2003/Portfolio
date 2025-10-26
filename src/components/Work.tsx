@@ -33,8 +33,8 @@ const Work = () => {
         'Profile management',
         'Help and support sessions'
       ],
-      githubUrl: 'https://github.com/Gangadhara2003/AI',
-      liveUrl: 'https://ai-v1-three.vercel.app',
+      githubUrl: 'https://github.com/Gangadhara2003/Gemini_clone_frontend',
+      liveUrl: 'https://gemini-clone-frontend-five.vercel.app/',
       category: 'AI Application'
     }
   ];
