@@ -10,7 +10,7 @@ const Stats = () => {
     },
     {
       icon: <Code className="text-accent" size={32} />,
-      number: '2+',
+      number: '3+',
       label: 'Major Projects',
       description: 'Full-stack applications built',
     },

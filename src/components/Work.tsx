@@ -2,7 +2,7 @@ import { ExternalLink, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import foodDeliveryMockup from '@/assets/food-delivery-mockup.jpg';
 import geminiCloneMockup from '@/assets/gemini-clone-mockup.jpg';
-
+import emailclassifierMockup from '@/assets/email-classifier-mockup.jpg';
 const Work = () => {
   const projects = [
     {
@@ -36,6 +36,23 @@ const Work = () => {
       githubUrl: 'https://github.com/Gangadhara2003/Gemini_clone_frontend',
       liveUrl: 'https://gemini-clone-frontend-five.vercel.app/',
       category: 'AI Application'
+    },
+    {
+      title: 'Email Classifier',
+      description: 'A full-stack AI email classifier built with Next.js and TypeScript. It connects to Gmail using OAuth, fetches messages, and uses Gemini AI to categorize emails with a clean UI. For testing, you can send an email to gangadharaks2003@gmail.com',
+      image: emailclassifierMockup,
+      technologies: ['Next.js', 'TypeScript', 'MongoDB', 'Google OAuth', 'Gemini AI'],
+      features: [
+        'Secure Google login',
+        'Fetch and display recent Gmail messages',
+        'AI-based email classification',
+        'Structured and accurate AI responses',
+        'Clean and responsive UI',
+        'For testing, send an email to: gangadharaks2003@gmail.com'
+      ],
+      githubUrl: 'https://github.com/Gangadhara2003/email_classifier',
+      liveUrl: 'https://email-classifier-chi.vercel.app',
+      category: 'Full-Stack Application'
     }
   ];
 
