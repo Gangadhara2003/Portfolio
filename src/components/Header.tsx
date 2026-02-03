@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { ModeToggle } from '@/components/mode-toggle';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -48,6 +49,7 @@ const Header = () => {
                 Resume
               </Button>
             </a>
+            <ModeToggle />
           </div>
 
           {/* Mobile Menu Button */}
@@ -80,6 +82,9 @@ const Header = () => {
                   Resume
                 </Button>
               </a>
+              <div className="pt-2">
+                <ModeToggle />
+              </div>
             </div>
           </div>
         )}

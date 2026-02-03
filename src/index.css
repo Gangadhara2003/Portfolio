@@ -7,52 +7,56 @@
 @layer base {
   :root {
     /* Dark theme colors */
-    --background: 220 27% 8%;
+    --background: 0 0% 0%;
+    /* #000000 */
     --foreground: 210 40% 98%;
 
-    --card: 220 25% 10%;
+    --card: 200 20% 10%;
+    /* Dark Gray */
     --card-foreground: 210 40% 98%;
 
-    --popover: 220 25% 10%;
+    --popover: 200 20% 10%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 28 100% 65%;
-    --primary-foreground: 220 27% 8%;
+    --primary: 197 71% 73%;
+    /* #87CEEB Sky Blue */
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 220 15% 15%;
+    --secondary: 200 20% 15%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 220 15% 15%;
-    --muted-foreground: 217 10% 65%;
+    --muted: 200 20% 15%;
+    --muted-foreground: 200 10% 70%;
 
-    --accent: 28 100% 65%;
-    --accent-foreground: 220 27% 8%;
+    --accent: 197 71% 73%;
+    /* #87CEEB Sky Blue */
+    --accent-foreground: 0 0% 0%;
 
     --destructive: 0 84% 65%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 15% 20%;
-    --input: 220 15% 15%;
-    --ring: 28 100% 65%;
+    --border: 200 20% 20%;
+    --input: 200 20% 20%;
+    --ring: 197 71% 73%;
 
     --radius: 12px;
 
-    /* Portfolio specific design tokens */
-    --hero-gradient: linear-gradient(135deg, hsl(220 27% 8%) 0%, hsl(230 35% 12%) 50%, hsl(240 25% 16%) 100%);
-    --card-gradient: linear-gradient(135deg, hsl(220 25% 10%) 0%, hsl(225 20% 12%) 100%);
-    --accent-gradient: linear-gradient(135deg, hsl(28 100% 65%) 0%, hsl(35 100% 70%) 100%);
-    --text-gradient: linear-gradient(135deg, hsl(210 40% 98%) 0%, hsl(217 10% 85%) 100%);
-    
-    /* Shadows and glows */
-    --shadow-soft: 0 4px 20px -2px hsl(220 27% 4% / 0.3);
-    --shadow-medium: 0 8px 40px -4px hsl(220 27% 4% / 0.4);
-    --shadow-strong: 0 20px 60px -10px hsl(220 27% 4% / 0.5);
-    --glow-accent: 0 0 40px hsl(28 100% 65% / 0.3);
-    
+    /* Portfolio specific design tokens - FLAT COLORS ONLY */
+    --hero-gradient: none;
+    --card-gradient: hsl(var(--card));
+    --accent-gradient: hsl(var(--accent));
+    --text-gradient: hsl(var(--foreground));
+
+    /* Shadows and glows - Lighter and subtle */
+    --shadow-soft: 0 4px 20px -2px hsl(0 0% 0% / 0.1);
+    --shadow-medium: 0 8px 40px -4px hsl(0 0% 0% / 0.2);
+    --shadow-strong: 0 20px 60px -10px hsl(0 0% 0% / 0.3);
+    --glow-accent: 0 0 20px hsl(197 71% 73% / 0.1);
+
     /* Animation values */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-spring: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-    
+
     /* Typography scale */
     --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -76,10 +80,41 @@
 
   /* Light theme - keeping minimal for this dark-themed portfolio */
   .light {
-    --background: 210 40% 98%;
-    --foreground: 220 27% 8%;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
     --card: 0 0% 100%;
-    --card-foreground: 220 27% 8%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 207 44% 49%;
+    /* #4682B4 Steel Blue */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 207 44% 49%;
+    /* #4682B4 Steel Blue */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 207 44% 49%;
+
+    /* Light theme gradients - solid or subtle */
+    --hero-gradient: none;
+    --card-gradient: #ffffff;
+    --accent-gradient: #4682B4;
+    --text-gradient: #0f172a;
   }
 }
 
@@ -90,7 +125,7 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    background: var(--hero-gradient);
+    /* background: var(--hero-gradient); Removed gradient */
     min-height: 100vh;
     font-family: var(--font-body);
   }
@@ -102,17 +137,14 @@
 
   /* Custom typography */
   .text-gradient {
-    background: var(--text-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-gradient);
+    /* Fallback or just regular color */
+    /* Removed background-clip text so it's solid color */
   }
 
   .text-accent-gradient {
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--accent-gradient);
+    /* Removed background-clip text */
   }
 
   /* Custom animations */
@@ -145,13 +177,15 @@
   .portfolio-card {
     background: var(--card-gradient);
     border: 1px solid hsl(var(--border));
-    box-shadow: var(--shadow-soft);
+    box-shadow: none;
+    /* Removed default shadow */
     transition: var(--transition-smooth);
   }
 
   .portfolio-card:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-medium);
+    /* Shadow only on hover */
     border-color: hsl(var(--accent) / 0.3);
   }
 
@@ -187,6 +221,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -198,6 +233,7 @@
     opacity: 0;
     transform: translateY(40px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -209,6 +245,7 @@
     opacity: 0;
     transform: scale(0.9);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
