@@ -86,7 +86,7 @@ const Hero = () => {
             </div>
 
             <div className="absolute -bottom-4 -left-4 portfolio-card rounded-lg p-4 animate-slide-up">
-              <div className="text-accent font-bold text-xl">Next.js and Context API</div>
+              <div className="text-accent font-bold text-sm md:text-xl">Next.js and Context API</div>
               <div className="text-sm text-muted-foreground">Expert</div>
             </div>
           </div>
