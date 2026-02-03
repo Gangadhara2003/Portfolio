@@ -16,15 +16,15 @@ const Header = () => {
 
   const navItems = [
     { href: '#about', label: 'About' },
+    { href: '#experience', label: 'Experience' },
     { href: '#services', label: 'Services' },
     { href: '#work', label: 'Work' },
     { href: '#contact', label: 'Contact' },
   ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-background/90 backdrop-blur-md border-b border-border' : 'bg-transparent'
-    }`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-background/90 backdrop-blur-md border-b border-border' : 'bg-transparent'
+      }`}>
       <nav className="container mx-auto container-padding py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}

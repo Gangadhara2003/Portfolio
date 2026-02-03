@@ -12,7 +12,7 @@ const About = () => {
     {
       icon: <Code2 className="text-accent" size={24} />,
       title: 'Full-Stack Development',
-      description: 'Proficient in Java, Spring Boot, React, and modern web technologies',
+      description: 'Expertise in React ecosystem, including Hooks, Redux Toolkit, Context API, Router, and Next.js.',
     },
     {
       icon: <Database className="text-accent" size={24} />,
@@ -50,15 +50,15 @@ const About = () => {
               Bridging Hardware Knowledge with Software Innovation
             </h3>
             <p className="text-muted-foreground mb-6 leading-relaxed">
-              As a recent Electronics and Communication Engineering graduate with a 7.5 CGPA, 
-              I've channeled my analytical mindset and problem-solving skills into full-stack development. 
-              My journey from understanding circuit designs to architecting web applications has given me 
+              As a recent Electronics and Communication Engineering graduate with a 7.5 CGPA,
+              I've channeled my analytical mindset and problem-solving skills into full-stack development.
+              My journey from understanding circuit designs to architecting web applications has given me
               a unique perspective on building robust, scalable systems.
             </p>
             <p className="text-muted-foreground mb-8 leading-relaxed">
-              Currently honing my skills as a Java Development Intern at TAP Academy, I specialize in 
-              Java, Spring Boot, React, and modern database technologies. I'm passionate about creating 
-              applications that not only work flawlessly but also provide exceptional user experiences.
+              Having honed my skills as a Java Development Intern at TAP Academy, I am currently driving innovation as a
+              Tech, AI, & Platform Development Intern at VCNITI. I specialize in Java, Spring Boot, React, and modern
+              database technologies, creating applications that deliver exceptional user experiences.
             </p>
 
             {/* Skills Progress */}
@@ -70,7 +70,7 @@ const About = () => {
                     <span className="text-accent">{skill.level}%</span>
                   </div>
                   <div className="w-full bg-secondary rounded-full h-2">
-                    <div 
+                    <div
                       className="bg-accent h-2 rounded-full transition-all duration-1000 ease-out"
                       style={{ width: `${skill.level}%` }}
                     ></div>
@@ -83,8 +83,8 @@ const About = () => {
           {/* Achievements Grid */}
           <div className="grid gap-6">
             {achievements.map((achievement, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="portfolio-card rounded-xl p-6 hover-lift animate-scale-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >

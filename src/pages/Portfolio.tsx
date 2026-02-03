@@ -3,6 +3,7 @@ import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Stats from '@/components/Stats';
 import Services from '@/components/Services';
+import Experience from '@/components/Experience';
 import Work from '@/components/Work';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
@@ -15,6 +16,7 @@ const Portfolio = () => {
         <Hero />
         <About />
         <Stats />
+        <Experience />
         <Services />
         <Work />
         <Contact />
