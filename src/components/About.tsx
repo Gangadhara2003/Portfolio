@@ -1,108 +1,72 @@
-import { Code2, Database, Globe, Lightbulb } from 'lucide-react';
+import { Terminal, Database, Cpu, Globe } from 'lucide-react';
 
 const About = () => {
-  const skills = [
-    { name: 'Java & Spring Boot', level: 90 },
-    { name: 'React & JavaScript', level: 90 },
-    { name: 'Database Design', level: 80 },
-    { name: 'System Architecture', level: 75 },
-  ];
-
-  const achievements = [
+  const expertises = [
     {
-      icon: <Code2 className="text-accent" size={24} />,
-      title: 'Full-Stack Development',
-      description: 'Expertise in React ecosystem, including Hooks, Redux Toolkit, Context API, Router, and Next.js.',
+      icon: <Terminal className="w-5 h-5 mb-2 text-primary" />,
+      title: "Backend Development",
+      description: "Building scalable APIs with Node.js and Express.",
+      skills: ["Node.js", "Express", "REST APIs", "GraphQL"]
     },
     {
-      icon: <Database className="text-accent" size={24} />,
-      title: 'Database Expertise',
-      description: 'Experience with MySQL, MongoDB, and database optimization',
+      icon: <Globe className="w-5 h-5 mb-2 text-primary" />,
+      title: "Frontend Engineering",
+      description: "Crafting responsive UIs with React and modern CSS.",
+      skills: ["React", "TypeScript", "Tailwind", "Next.js"]
     },
     {
-      icon: <Globe className="text-accent" size={24} />,
-      title: 'API Integration',
-      description: 'Built applications with Google Gemini API and RESTful services',
+      icon: <Database className="w-5 h-5 mb-2 text-primary" />,
+      title: "Database Architecture",
+      description: "Designing efficient schemas and data pipelines.",
+      skills: ["MongoDB", "PostgreSQL", "Firebase", "Redis"]
     },
     {
-      icon: <Lightbulb className="text-accent" size={24} />,
-      title: 'Problem Solving',
-      description: 'NPTEL certified in Programming, Data Structures & Algorithms',
-    },
+      icon: <Cpu className="w-5 h-5 mb-2 text-primary" />,
+      title: "System Design",
+      description: "Applying engineering principles to software architecture.",
+      skills: ["Data Structures", "Algorithms", "System Design", "AWS"]
+    }
   ];
 
   return (
-    <section id="about" className="section-padding">
+    <section id="about" className="section-padding bg-background">
       <div className="container mx-auto container-padding">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-gradient">
-            About Me
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Electronics Engineer turned Full-Stack Developer with a passion for creating innovative solutions
-          </p>
-        </div>
+        <div className="grid lg:grid-cols-2 gap-16">
+          {/* Bio Column */}
+          <div className="space-y-6">
+            <span className="text-sm font-bold tracking-widest text-primary uppercase">About Me</span>
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground leading-tight">
+              Building scalable, high-performance software solutions.
+            </h2>
+            <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
+              <p>
+                My journey in full-stack development is driven by a passion for solving complex problems with clean, efficient code. I focus on engineering disciplined, bug-free applications that deliver exceptional user experiences.
+              </p>
+              <p>
+                Currently interning at VCNITI, I apply these principles daily to build AI-driven platforms and optimize performance for scale.
+              </p>
+            </div>
+          </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Content */}
-          <div className="animate-fade-in">
-            <h3 className="text-2xl font-bold mb-6 text-foreground">
-              Bridging Hardware Knowledge with Software Innovation
-            </h3>
-            <p className="text-muted-foreground mb-6 leading-relaxed">
-              As a recent Electronics and Communication Engineering graduate with a 7.5 CGPA,
-              I've channeled my analytical mindset and problem-solving skills into full-stack development.
-              My journey from understanding circuit designs to architecting web applications has given me
-              a unique perspective on building robust, scalable systems.
-            </p>
-            <p className="text-muted-foreground mb-8 leading-relaxed">
-              Having honed my skills as a Java Development Intern at TAP Academy, I am currently driving innovation as a
-              Tech, AI, & Platform Development Intern at VCNITI. I specialize in Java, Spring Boot, React, and modern
-              database technologies, creating applications that deliver exceptional user experiences.
-            </p>
-
-            {/* Skills Progress */}
-            <div className="space-y-6">
-              {skills.map((skill, index) => (
-                <div key={index} className="animate-slide-up">
-                  <div className="flex justify-between mb-2">
-                    <span className="font-medium text-foreground">{skill.name}</span>
-                    <span className="text-accent">{skill.level}%</span>
-                  </div>
-                  <div className="w-full bg-secondary rounded-full h-2">
-                    <div
-                      className="bg-accent h-2 rounded-full transition-all duration-1000 ease-out"
-                      style={{ width: `${skill.level}%` }}
-                    ></div>
+          {/* Expertise Column */}
+          <div className="grid gap-6">
+            <h3 className="text-xl font-bold font-display mb-2">Technical Expertise</h3>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {expertises.map((item, idx) => (
+                <div key={idx} className="p-6 rounded-xl bg-card border border-white/5 hover:border-primary/20 transition-colors group">
+                  {item.icon}
+                  <h4 className="font-semibold text-foreground mb-2">{item.title}</h4>
+                  <p className="text-sm text-muted-foreground mb-4 h-10">{item.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {item.skills.map(skill => (
+                      <span key={skill} className="text-xs px-2 py-1 rounded-md bg-secondary text-secondary-foreground border border-white/5">
+                        {skill}
+                      </span>
+                    ))}
                   </div>
                 </div>
               ))}
             </div>
-          </div>
-
-          {/* Achievements Grid */}
-          <div className="grid gap-6">
-            {achievements.map((achievement, index) => (
-              <div
-                key={index}
-                className="portfolio-card rounded-xl p-6 hover-lift animate-scale-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0">
-                    {achievement.icon}
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-2">
-                      {achievement.title}
-                    </h4>
-                    <p className="text-muted-foreground text-sm">
-                      {achievement.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </div>

@@ -2,119 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Modern Portfolio Design System - Dark theme with elegant gradients and typography */
-
 @layer base {
   :root {
-    /* Dark theme colors */
-    --background: 0 0% 0%;
-    /* #000000 */
-    --foreground: 210 40% 98%;
+    /* Refined Charcoal Theme - Dark Mode Default */
+    --background: 240 10% 3.9%;
+    /* #0a0a0a - Deep Charcoal */
+    --foreground: 0 0% 98%;
 
-    --card: 200 20% 10%;
-    /* Dark Gray */
-    --card-foreground: 210 40% 98%;
+    --card: 240 10% 5.9%;
+    /* #171717 - Rich Gray */
+    --card-foreground: 0 0% 98%;
 
-    --popover: 200 20% 10%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 240 10% 5.9%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 197 71% 73%;
-    /* #87CEEB Sky Blue */
-    --primary-foreground: 0 0% 0%;
+    --primary: 217 91% 60%;
+    /* #3b82f6 - Trustworthy Blue */
+    --primary-foreground: 222 47% 11%;
 
-    --secondary: 200 20% 15%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 240 4% 16%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 200 20% 15%;
-    --muted-foreground: 200 10% 70%;
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 5% 65%;
 
-    --accent: 197 71% 73%;
-    /* #87CEEB Sky Blue */
-    --accent-foreground: 0 0% 0%;
+    --accent: 175 84% 32%;
+    /* #0d9488 - Teal, professional but modern */
+    --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 84% 65%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 200 20% 20%;
-    --input: 200 20% 20%;
-    --ring: 197 71% 73%;
+    --border: 240 4% 22%;
+    /* Subtle border */
+    --input: 240 4% 22%;
+    --ring: 240 5% 65%;
+    /* Muted ring */
 
-    --radius: 12px;
-
-    /* Portfolio specific design tokens - FLAT COLORS ONLY */
-    --hero-gradient: none;
-    --card-gradient: hsl(var(--card));
-    --accent-gradient: hsl(var(--accent));
-    --text-gradient: hsl(var(--foreground));
-
-    /* Shadows and glows - Lighter and subtle */
-    --shadow-soft: 0 4px 20px -2px hsl(0 0% 0% / 0.1);
-    --shadow-medium: 0 8px 40px -4px hsl(0 0% 0% / 0.2);
-    --shadow-strong: 0 20px 60px -10px hsl(0 0% 0% / 0.3);
-    --glow-accent: 0 0 20px hsl(197 71% 73% / 0.1);
-
-    /* Animation values */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-spring: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-
-    /* Typography scale */
-    --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --radius: 0.75rem;
   }
 
-  /* Light theme - keeping minimal for this dark-themed portfolio */
   .light {
+    /* Clean "Paper" Theme - Minimal Light Mode */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 240 10% 3.9%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 240 10% 3.9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 240 10% 3.9%;
 
-    --primary: 207 44% 49%;
-    /* #4682B4 Steel Blue */
-    --primary-foreground: 0 0% 100%;
+    --primary: 221 83% 53%;
+    /* Slightly darker blue for contrast on white */
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 6% 10%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
 
-    --accent: 207 44% 49%;
-    /* #4682B4 Steel Blue */
-    --accent-foreground: 0 0% 100%;
+    --accent: 175 84% 32%;
+    --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 207 44% 49%;
-
-    /* Light theme gradients - solid or subtle */
-    --hero-gradient: none;
-    --card-gradient: #ffffff;
-    --accent-gradient: #4682B4;
-    --text-gradient: #0f172a;
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 240 10% 3.9%;
   }
 }
 
@@ -123,142 +80,43 @@
     @apply border-border;
   }
 
-  body {
-    @apply bg-background text-foreground antialiased;
-    /* background: var(--hero-gradient); Removed gradient */
-    min-height: 100vh;
-    font-family: var(--font-body);
-  }
-
-  /* Smooth scrolling */
   html {
     scroll-behavior: smooth;
   }
 
-  /* Custom typography */
-  .text-gradient {
-    color: var(--text-gradient);
-    /* Fallback or just regular color */
-    /* Removed background-clip text so it's solid color */
-  }
-
-  .text-accent-gradient {
-    color: var(--accent-gradient);
-    /* Removed background-clip text */
-  }
-
-  /* Custom animations */
-  .animate-fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
-  }
-
-  .animate-slide-up {
-    animation: slideUp 0.6s ease-out forwards;
-  }
-
-  .animate-scale-in {
-    animation: scaleIn 0.4s ease-out forwards;
-  }
-
-  .hover-lift {
-    transition: var(--transition-smooth);
-  }
-
-  .hover-lift:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-strong);
-  }
-
-  .hover-glow:hover {
-    box-shadow: var(--glow-accent);
-  }
-
-  /* Card styles */
-  .portfolio-card {
-    background: var(--card-gradient);
-    border: 1px solid hsl(var(--border));
-    box-shadow: none;
-    /* Removed default shadow */
-    transition: var(--transition-smooth);
-  }
-
-  .portfolio-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-medium);
-    /* Shadow only on hover */
-    border-color: hsl(var(--accent) / 0.3);
-  }
-
-  /* Button styles */
-  .btn-primary {
-    background: var(--accent-gradient);
-    color: hsl(var(--primary-foreground));
-    border: none;
-    transition: var(--transition-smooth);
-  }
-
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--glow-accent);
-  }
-
-  .btn-secondary {
-    background: transparent;
-    border: 1px solid hsl(var(--accent));
-    color: hsl(var(--accent));
-    transition: var(--transition-smooth);
-  }
-
-  .btn-secondary:hover {
-    background: hsl(var(--accent));
-    color: hsl(var(--accent-foreground));
-    transform: translateY(-2px);
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary font-sans;
+    font-feature-settings: "cv11", "ss01";
   }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Section spacing */
 @layer utilities {
+  .glass-panel {
+    @apply bg-background/60 backdrop-blur-xl border border-white/10 dark:border-white/5 shadow-sm;
+  }
+
+  .glass-card {
+    @apply bg-card/60 backdrop-blur-md border border-white/5 hover:bg-card/80 transition-all duration-300;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
   .section-padding {
-    @apply py-16 md:py-24;
+    @apply py-10 md:py-16;
   }
 
   .container-padding {
-    @apply px-4 sm:px-6 lg:px-8;
+    @apply px-6 md:px-12 max-w-7xl mx-auto;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 }

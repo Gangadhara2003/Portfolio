@@ -1,75 +1,59 @@
-import { Code2, Database, Globe, Smartphone } from 'lucide-react';
+import { Code2, Database, Globe, Smartphone, ArrowRight } from 'lucide-react';
 
 const Services = () => {
   const services = [
     {
-      icon: <Code2 className="text-accent" size={40} />,
+      icon: <Code2 className="w-8 h-8 text-primary" />,
       title: 'Full-Stack Development',
-      description: 'End-to-end web application development using Java, Spring Boot, React, and modern frameworks.',
-      technologies: ['Java', 'Spring Boot', 'React', 'JavaScript'],
+      description: 'Building end-to-end web applications with Node.js and React.',
     },
     {
-      icon: <Database className="text-accent" size={40} />,
-      title: 'Backend Development',
-      description: 'Scalable server-side solutions with RESTful APIs, database design, and system architecture.',
-      technologies: ['MySQL', 'MongoDB', 'Hibernate', 'JPA'],
+      icon: <Database className="w-8 h-8 text-primary" />,
+      title: 'Database Architecture',
+      description: 'Designing scalable schemas for SQL (PostgreSQL) and NoSQL (MongoDB) databases.',
     },
     {
-      icon: <Globe className="text-accent" size={40} />,
-      title: 'Frontend Development',
-      description: 'Modern, responsive user interfaces with React, JavaScript, and contemporary design principles.',
-      technologies: ['React', 'HTML5', 'Tailwind CSS', 'Responsive Design'],
+      icon: <Globe className="w-8 h-8 text-primary" />,
+      title: 'Frontend Engineering',
+      description: 'Creating responsive, pixel-perfect interfaces with Tailwind CSS and Next.js.',
     },
     {
-      icon: <Smartphone className="text-accent" size={40} />,
-      title: 'API Integration',
-      description: 'Third-party service integration, API development, and real-time data processing solutions.',
-      technologies: ['REST APIs', 'Google APIs', 'JSON'],
+      icon: <Smartphone className="w-8 h-8 text-primary" />,
+      title: 'App Integration',
+      description: 'Connecting third-party services and APIs for comprehensive solutions.',
     },
   ];
 
   return (
-    <section id="services" className="section-padding">
+    <section id="services" className="section-padding bg-secondary/20">
       <div className="container mx-auto container-padding">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-gradient">
-            What I Offer
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Comprehensive development services to bring your digital vision to life
-          </p>
+        <div className="text-center md:text-left mb-16 flex flex-col md:flex-row justify-between items-end gap-6">
+          <div className="max-w-xl">
+            <span className="text-sm font-bold tracking-widest text-primary uppercase">Services</span>
+            <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground mt-2">
+              How I can help you <br /> build your next product.
+            </h2>
+          </div>
+          <a href="#contact" className="hidden md:flex items-center text-primary font-medium hover:underline underline-offset-4">
+            Let's discuss your project <ArrowRight className="ml-2 w-4 h-4" />
+          </a>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
-            <div 
-              key={index} 
-              className="portfolio-card rounded-xl p-8 hover-lift animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
+            <div
+              key={index}
+              className="p-6 rounded-2xl bg-background border border-white/5 hover:border-primary/50 transition-all duration-300 group hover:-translate-y-1"
             >
-              <div className="flex items-center mb-6">
-                <div className="flex-shrink-0 mr-4">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-foreground">
-                  {service.title}
-                </h3>
+              <div className="h-14 w-14 rounded-full bg-secondary flex items-center justify-center mb-6 group-hover:bg-primary/10 transition-colors">
+                {service.icon}
               </div>
-              
-              <p className="text-muted-foreground mb-6 leading-relaxed">
+              <h3 className="text-lg font-bold font-display text-foreground mb-3">
+                {service.title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed text-sm">
                 {service.description}
               </p>
-              
-              <div className="flex flex-wrap gap-2">
-                {service.technologies.map((tech, techIndex) => (
-                  <span 
-                    key={techIndex}
-                    className="px-3 py-1 text-sm bg-accent/10 text-accent rounded-full border border-accent/20"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
             </div>
           ))}
         </div>
