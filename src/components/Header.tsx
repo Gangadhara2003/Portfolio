@@ -31,8 +31,11 @@ const Header = () => {
       <nav className="container mx-auto container-padding py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="text-xl font-bold text-accent">
-            Gangadhara K S
+          <div
+            className="text-xl font-bold text-accent cursor-pointer hover:opacity-80 transition-opacity"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
+            Portfolio
           </div>
 
           {/* Desktop Navigation */}
