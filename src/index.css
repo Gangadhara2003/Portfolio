@@ -95,7 +95,7 @@
     @apply bg-background/60 backdrop-blur-xl border border-white/10 dark:border-white/5 shadow-sm;
   }
 
-  .glass-card {
+  GHDGEGY .glass-card {
     @apply bg-card/60 backdrop-blur-md border border-white/5 hover:bg-card/80 transition-all duration-300;
   }
 

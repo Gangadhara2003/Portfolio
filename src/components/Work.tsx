@@ -5,6 +5,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import foodDeliveryMockup from '@/assets/food-delivery-mockup.jpg';
 import vcnitiMockup from '@/assets/vcniti.png';
 import emailclassifierMockup from '@/assets/email-classifier-mockup.jpg';
+import ScrollAnimation from '@/components/ui/ScrollAnimation';
 
 const Work = () => {
   const projects = [
@@ -39,20 +40,26 @@ const Work = () => {
     <section id="work" className="section-padding">
       <div className="container mx-auto container-padding">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
-          <div>
-            <span className="text-sm font-bold tracking-widest text-primary uppercase">Portfolio</span>
-            <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground mt-2">
-              Selected Works
-            </h2>
-          </div>
-          <a href="https://github.com/Gangadhara2003" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors flex items-center">
-            View GitHub <Github className="ml-2 w-4 h-4" />
-          </a>
+          <ScrollAnimation direction="up">
+            <div>
+              <span className="text-sm font-bold tracking-widest text-primary uppercase">Portfolio</span>
+              <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground mt-2">
+                Selected Works
+              </h2>
+            </div>
+          </ScrollAnimation>
+          <ScrollAnimation direction="left" delay={0.2}>
+            <a href="https://github.com/Gangadhara2003" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors flex items-center">
+              View GitHub <Github className="ml-2 w-4 h-4" />
+            </a>
+          </ScrollAnimation>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} index={index} />
+            <ScrollAnimation key={index} direction="up" delay={index * 0.1}>
+              <ProjectCard project={project} index={index} />
+            </ScrollAnimation>
           ))}
         </div>
       </div>
