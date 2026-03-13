@@ -56,7 +56,6 @@
     "express": "^5.2.1",
     "framer-motion": "^12.30.0",
     "gsap": "^3.14.2",
-    "gsap-trial": "^3.12.7",
     "input-otp": "^1.4.2",
     "lucide-react": "^0.462.0",
     "next-themes": "^0.3.0",
