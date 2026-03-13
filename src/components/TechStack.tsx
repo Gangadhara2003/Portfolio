@@ -10,6 +10,7 @@ import {
   CylinderCollider,
   RapierRigidBody,
 } from "@react-three/rapier";
+import { useTheme } from "./theme-provider";
 
 const textureLoader = new THREE.TextureLoader();
 const imageUrls = [
@@ -131,7 +132,7 @@ const TechStack = () => {
 
   useEffect(() => {
     setIsActive(true); // Default to active for better responsiveness
-    
+
     const handleScroll = () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
       const workElement = document.getElementById("work");
@@ -140,18 +141,22 @@ const TechStack = () => {
         // setIsActive(true);
       }
     };
-    
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
+  const { theme } = useTheme();
+  const isDark = theme === "dark" || (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+
   const materials = useMemo(() => {
     return textures.map(
       (texture) =>
         new THREE.MeshPhysicalMaterial({
           map: texture,
+          color: "#ffffff",
           emissive: "#ffffff",
           emissiveMap: texture,
           emissiveIntensity: 0.3,
@@ -160,53 +165,57 @@ const TechStack = () => {
           clearcoat: 0.1,
         })
     );
-  }, []);
+  }, [isDark]);
 
   return (
     <section className="section-padding bg-background/50 overflow-hidden">
       <div className="container mx-auto container-padding overflow-hidden">
-        <div className="techstack w-full h-[500px] relative overflow-hidden">
-      <h2 className="text-2xl font-bold font-display mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/50">My Techstack</h2>
+        <div className="techstack w-full h-[600px] relative overflow-hidden bg-[#000000] rounded-[32px] border border-white/5 shadow-2xl">
+          <div className="absolute top-8 left-0 w-full z-10 pointer-events-none">
+            <h2 className="text-2xl font-bold font-display text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/50 text-white">My Techstack</h2>
+          </div>
 
-      <Canvas
-        shadows
-        gl={{ alpha: true, stencil: false, depth: false, antialias: false }}
-        camera={{ position: [0, 0, 20] as [number, number, number], fov: 32.5, near: 1, far: 100 }}
-        onCreated={(state) => (state.gl.toneMappingExposure = 1.5)}
-        className="tech-canvas w-full h-full"
-      >
-        <ambientLight intensity={1} />
-        <spotLight
-          position={[20, 20, 25]}
-          penumbra={1}
-          angle={0.2}
-          color="white"
-          castShadow
-          shadow-mapSize={[512, 512]}
-        />
-        <directionalLight position={[0, 5, -4]} intensity={2} />
-        <Physics gravity={[0, 0, 0]}>
-          <Pointer isActive={isActive} />
-          {spheres.map((props, i) => (
-            <SphereGeo
-              key={i}
-              {...props}
-              material={materials[Math.floor(Math.random() * materials.length)]}
-              isActive={isActive}
+          <Canvas
+            shadows
+            gl={{ alpha: true, stencil: false, antialias: true }}
+            camera={{ position: [0, 0, 20] as [number, number, number], fov: 32.5, near: 1, far: 100 }}
+            onCreated={(state) => (state.gl.toneMappingExposure = 1.2)}
+            className="tech-canvas w-full h-full"
+          >
+            <color attach="background" args={["#000000"]} />
+            <ambientLight intensity={isDark ? 1 : 1.5} />
+            <spotLight
+              position={[20, 20, 25]}
+              penumbra={1}
+              angle={0.2}
+              color={isDark ? "white" : "#ffffff"}
+              intensity={isDark ? 1 : 2}
+              castShadow
+              shadow-mapSize={[512, 512]}
             />
-          ))}
-        </Physics>
-        <Environment
-          files="/models/char_enviorment.hdr"
-          environmentIntensity={0.5}
-          environmentRotation={[0, 4, 2]}
-        />
-        <EffectComposer enableNormalPass={false}>
-          <N8AO color="#0f002c" aoRadius={2} intensity={1.15} />
-        </EffectComposer>
-      </Canvas>
-    </div>
-    </div>
+            <directionalLight position={[0, 5, -4]} intensity={isDark ? 2 : 3} />
+            <Physics gravity={[0, 0, 0]}>
+              <Pointer isActive={isActive} />
+              {spheres.map((props, i) => (
+                <SphereGeo
+                  key={i}
+                  {...props}
+                  material={materials[Math.floor(Math.random() * materials.length)]}
+                  isActive={isActive}
+                />
+              ))}
+            </Physics>
+            <Environment
+              files="/models/char_enviorment.hdr"
+              environmentIntensity={0.5}
+              environmentRotation={[0, 4, 2]}
+            />
+            <EffectComposer enableNormalPass={false}>
+              <N8AO color="#000000" aoRadius={2} intensity={1.5} />
+            </EffectComposer>
+          </Canvas>
+        </div>
+      </div>
     </section>
   );
 };

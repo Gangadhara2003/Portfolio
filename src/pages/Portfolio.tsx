@@ -35,20 +35,22 @@ const Portfolio = () => {
   }, { scope: main });
 
   return (
-    <div ref={main} id="smooth-wrapper" className="min-h-screen overflow-x-hidden">
-      <div id="smooth-content">
-        <Header />
-        <main>
-          <Hero />
-          <VCNITIExperience />
-          <About />
-          <TechStack />
-          <Experience />
-          <Services />
-          <Work />
-          <Contact />
-        </main>
-        <Footer />
+    <div ref={main} className="min-h-screen overflow-x-hidden">
+      <Header />
+      <div id="smooth-wrapper">
+        <div id="smooth-content">
+          <main>
+            <Hero />
+            <VCNITIExperience />
+            <About />
+            <TechStack />
+            <Experience />
+            <Services />
+            <Work />
+            <Contact />
+          </main>
+          <Footer />
+        </div>
       </div>
     </div>
   );
