@@ -82,11 +82,15 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary font-sans;
     font-feature-settings: "cv11", "ss01";
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
   }
 }
 
@@ -119,4 +123,11 @@
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
   }
+}
+.techstack {
+  @apply rounded-3xl overflow-hidden bg-gradient-to-b from-card/30 to-background/30 border border-white/5;
+}
+
+.tech-canvas {
+  @apply cursor-grab active:cursor-grabbing;
 }
