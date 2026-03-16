@@ -25,7 +25,7 @@ const Footer = () => {
     <footer className="border-t border-white/5 bg-background py-8">
       <div className="container mx-auto container-padding flex flex-col md:flex-row justify-between items-center gap-4">
         <div className="text-sm text-muted-foreground text-center md:text-left">
-          © {currentYear} Gangadhara K S.
+          Gangadhara K S.
         </div>
 
         <div className="flex space-x-6">
