@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import gsap from 'gsap';
+import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import { Button } from '@/components/ui/button';
 import { ModeToggle } from '@/components/mode-toggle';
 
@@ -28,6 +30,21 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const smoother = ScrollSmoother.get();
+    if (smoother) {
+      smoother.scrollTo(targetId, true);
+    } else {
+      const element = document.querySelector(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+    setActiveSection(targetId.replace('#', ''));
+    setIsMenuOpen(false);
+  };
+
   const navItems = [
     { href: '#home', label: 'Me', id: 'home' },
     { href: '#vcniti-experience', label: 'Internship', id: 'vcniti-experience' },
@@ -52,7 +69,14 @@ const Header = () => {
         {/* Mobile Logo / Text */}
         <div
           className="text-lg font-bold font-display tracking-tight md:hidden mr-4 cursor-pointer"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={() => {
+            const smoother = ScrollSmoother.get();
+            if (smoother) {
+              smoother.scrollTo(0, true);
+            } else {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          }}
         >
           GK
         </div>
@@ -67,7 +91,7 @@ const Header = () => {
                 relative px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200
                 ${activeSection === item.id ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'}
               `}
-              onClick={() => setActiveSection(item.id)}
+              onClick={(e) => handleNavClick(e, item.href)}
             >
               {activeSection === item.id && (
                 <motion.div
@@ -84,7 +108,7 @@ const Header = () => {
 
         <div className="flex items-center gap-2">
 
-          <a href="https://drive.google.com/file/d/1nR4CiBHpFhhQk5sPqsinCNcN7TAxlGDz/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="hidden md:block ml-2">
+          <a href="https://drive.google.com/file/d/1L5I1O05lN3uO_ZwqPlWFEOgwOhklVa2l/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="hidden md:block ml-2">
             <Button variant="ghost" size="sm" className="rounded-full text-xs font-medium border border-border hover:bg-secondary">
               Resume
             </Button>
@@ -120,13 +144,10 @@ const Header = () => {
                 key={item.href}
                 href={item.href}
                 className={`
-                   px-4 py-3 rounded-lg text-sm font-medium transition-colors
-                   ${activeSection === item.id ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:bg-secondary/50'}
-                `}
-                onClick={() => {
-                  setActiveSection(item.id);
-                  setIsMenuOpen(false);
-                }}
+                    px-4 py-3 rounded-lg text-sm font-medium transition-colors
+                    ${activeSection === item.id ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:bg-secondary/50'}
+                 `}
+                onClick={(e) => handleNavClick(e, item.href)}
               >
                 {item.label}
               </a>

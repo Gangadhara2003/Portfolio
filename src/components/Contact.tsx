@@ -112,17 +112,17 @@ const Contact = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label className="text-xs font-medium uppercase tracking-wider text-muted-foreground">First Name</label>
-                    <Input name="firstName" value={formData.firstName} onChange={handleChange} placeholder="John" className="bg-secondary/50 border-white/5 focus-visible:ring-primary" required />
+                    <Input name="firstName" value={formData.firstName} onChange={handleChange} placeholder="Sujan" className="bg-secondary/50 border-white/5 focus-visible:ring-primary" required />
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Last Name</label>
-                    <Input name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Doe" className="bg-secondary/50 border-white/5 focus-visible:ring-primary" />
+                    <Input name="lastName" value={formData.lastName} onChange={handleChange} placeholder="R K" className="bg-secondary/50 border-white/5 focus-visible:ring-primary" />
                   </div>
                 </div>
 
                 <div className="space-y-2">
                   <label className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Email</label>
-                  <Input name="email" type="email" value={formData.email} onChange={handleChange} placeholder="john@example.com" className="bg-secondary/50 border-white/5 focus-visible:ring-primary" required />
+                  <Input name="email" type="email" value={formData.email} onChange={handleChange} placeholder="Sujan@example.com" className="bg-secondary/50 border-white/5 focus-visible:ring-primary" required />
                 </div>
 
                 <div className="space-y-2">
