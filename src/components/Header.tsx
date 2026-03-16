@@ -108,7 +108,7 @@ const Header = () => {
 
         <div className="flex items-center gap-2">
 
-          <a href="https://drive.google.com/file/d/14Zj9LqdJWPBhZJNmORLuKh2dmw2oghNs/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="hidden md:block ml-2">
+          <a href="https://drive.google.com/file/d/1j-HKUBbkxHGX5_af1U-tn55EvCw_bSIN/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="hidden md:block ml-2">
             <Button variant="ghost" size="sm" className="rounded-full text-xs font-medium border border-border hover:bg-secondary">
               Resume
             </Button>
