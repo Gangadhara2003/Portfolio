@@ -10,7 +10,6 @@ import {
   CylinderCollider,
   RapierRigidBody,
 } from "@react-three/rapier";
-import { useTheme } from "./theme-provider";
 
 const textureLoader = new THREE.TextureLoader();
 const imageUrls = [
@@ -131,25 +130,8 @@ const TechStack = () => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    setIsActive(true); // Default to active for better responsiveness
-
-    const handleScroll = () => {
-      const scrollY = window.scrollY || document.documentElement.scrollTop;
-      const workElement = document.getElementById("work");
-      if (workElement) {
-        // Simple logic to keep it active once we've reached a certain point or just always
-        // setIsActive(true);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    setIsActive(true);
   }, []);
-
-  const { theme } = useTheme();
-  const isDark = theme === "dark" || (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
 
   const materials = useMemo(() => {
     return textures.map(
@@ -165,14 +147,29 @@ const TechStack = () => {
           clearcoat: 0.1,
         })
     );
-  }, [isDark]);
+  }, []);
 
   return (
-    <section className="section-padding bg-background/50 overflow-hidden">
-      <div className="container mx-auto container-padding overflow-hidden">
-        <div className="techstack w-full h-[600px] relative overflow-hidden bg-[#000000] rounded-[32px] border border-white/5 shadow-2xl">
-          <div className="absolute top-8 left-0 w-full z-10 pointer-events-none">
-            <h2 className="text-2xl font-bold font-display text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/50 text-white">My Techstack</h2>
+    <section className="section-padding bg-charcoal overflow-hidden relative">
+      <div className="absolute inset-0 grid-bg opacity-5" />
+      <div className="container mx-auto container-padding overflow-hidden relative z-10">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <span className="font-anton text-sm uppercase tracking-[0.3em] text-golden/70 mb-4 block">Technologies</span>
+          <h2 className="font-anton text-4xl md:text-5xl uppercase text-white">
+            My <span className="text-golden">Tech Stack</span>
+          </h2>
+        </div>
+
+        <div className="techstack w-full h-[600px] relative overflow-hidden bg-[#0a0a0a] border border-white/10">
+          {/* Browser mockup header */}
+          <div className="absolute top-0 left-0 right-0 z-10 px-6 py-4 bg-[#0a0a0a]/80 backdrop-blur-sm border-b border-white/5 flex items-center gap-3">
+            <div className="flex gap-2">
+              <div className="w-3 h-3 rounded-full bg-red-500/60" />
+              <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
+              <div className="w-3 h-3 rounded-full bg-green-500/60" />
+            </div>
+            <span className="font-satoshi text-xs text-white/30 ml-4">interactive-tech-playground.tsx</span>
           </div>
 
           <Canvas
@@ -182,18 +179,18 @@ const TechStack = () => {
             onCreated={(state) => (state.gl.toneMappingExposure = 1.2)}
             className="tech-canvas w-full h-full"
           >
-            <color attach="background" args={["#000000"]} />
-            <ambientLight intensity={isDark ? 1 : 1.5} />
+            <color attach="background" args={["#0a0a0a"]} />
+            <ambientLight intensity={1} />
             <spotLight
               position={[20, 20, 25]}
               penumbra={1}
               angle={0.2}
-              color={isDark ? "white" : "#ffffff"}
-              intensity={isDark ? 1 : 2}
+              color="white"
+              intensity={1}
               castShadow
               shadow-mapSize={[512, 512]}
             />
-            <directionalLight position={[0, 5, -4]} intensity={isDark ? 2 : 3} />
+            <directionalLight position={[0, 5, -4]} intensity={2} />
             <Physics gravity={[0, 0, 0]}>
               <Pointer isActive={isActive} />
               {spheres.map((props, i) => (

@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
-import { Button } from '@/components/ui/button';
-import { ModeToggle } from '@/components/mode-toggle';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -46,57 +44,61 @@ const Header = () => {
   };
 
   const navItems = [
-    { href: '#home', label: 'Me', id: 'home' },
+    { href: '#home', label: 'Home', id: 'home' },
     { href: '#vcniti-experience', label: 'Internship', id: 'vcniti-experience' },
     { href: '#about', label: 'About', id: 'about' },
-    { href: '#experience', label: 'CV', id: 'experience' },
+    { href: '#experience', label: 'Career', id: 'experience' },
     { href: '#services', label: 'Skills', id: 'services' },
     { href: '#work', label: 'Work', id: 'work' },
     { href: '#contact', label: 'Contact', id: 'contact' },
   ];
 
   return (
-    <header className={`fixed top-4 left-0 right-0 z-50 transition-all duration-300 px-4 md:px-0 flex justify-center`}>
-      <nav
+    <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 md:px-6">
+      <motion.nav
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
         className={`
-          flex items-center justify-between 
-          md:px-2 md:py-2 pl-4 pr-2 py-2
-          rounded-full 
-          transition-all duration-300
-          ${isScrolled || isMenuOpen ? 'bg-background/80 backdrop-blur-md border border-white/10 shadow-lg w-full md:w-auto md:min-w-[320px]' : 'bg-transparent border-transparent w-full md:w-auto'}
+          flex items-center justify-between
+          px-4 md:px-3 py-2.5
+          rounded-full
+          transition-all duration-500
+          w-full max-w-5xl
+          ${isScrolled || isMenuOpen
+            ? 'bg-charcoal/70 backdrop-blur-2xl border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.4)]'
+            : 'bg-white/[0.04] backdrop-blur-xl border border-white/[0.06]'
+          }
         `}
       >
-        {/* Mobile Logo / Text */}
-        <div
-          className="text-lg font-bold font-display tracking-tight md:hidden mr-4 cursor-pointer"
-          onClick={() => {
-            const smoother = ScrollSmoother.get();
-            if (smoother) {
-              smoother.scrollTo(0, true);
-            } else {
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-          }}
+        {/* Logo */}
+        <a
+          href="#home"
+          onClick={(e) => handleNavClick(e, '#home')}
+          className="font-anton text-2xl tracking-tight text-white pl-3 shrink-0"
         >
-          GK
-        </div>
+          Gangadhara K S<span className="text-golden">.</span>
+        </a>
 
-        {/* Desktop Navigation pills */}
-        <div className="hidden md:flex items-center space-x-1">
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-0.5 mx-4">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
               className={`
-                relative px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200
-                ${activeSection === item.id ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'}
+                relative px-3.5 py-1.5 text-sm font-satoshi font-medium rounded-full transition-all duration-200
+                ${activeSection === item.id
+                  ? 'text-white'
+                  : 'text-white/40 hover:text-white/80'
+                }
               `}
               onClick={(e) => handleNavClick(e, item.href)}
             >
               {activeSection === item.id && (
                 <motion.div
                   layoutId="activePill"
-                  className="absolute inset-0 bg-primary/10 rounded-full"
+                  className="absolute inset-0 rounded-full bg-white/[0.08] border border-white/[0.06]"
                   initial={false}
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
@@ -106,57 +108,80 @@ const Header = () => {
           ))}
         </div>
 
-        <div className="flex items-center gap-2">
-
-          <a href="https://drive.google.com/file/d/1j-HKUBbkxHGX5_af1U-tn55EvCw_bSIN/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="hidden md:block ml-2">
-            <Button variant="ghost" size="sm" className="rounded-full text-xs font-medium border border-border hover:bg-secondary">
-              Resume
-            </Button>
+        {/* Right side */}
+        <div className="flex items-center gap-2 shrink-0">
+          <a
+            href="https://drive.google.com/file/d/1j-HKUBbkxHGX5_af1U-tn55EvCw_bSIN/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:inline-flex text-sm font-satoshi font-medium text-white/40 hover:text-white/80 transition-colors px-3"
+          >
+            Resume
           </a>
-          <div className="scale-75 origin-right">
-            <ModeToggle />
-          </div>
+          <a
+            href="#contact"
+            onClick={(e) => handleNavClick(e, '#contact')}
+            className="hidden md:inline-flex items-center gap-1.5 px-5 py-2 bg-golden text-charcoal text-sm font-satoshi font-bold rounded-full hover:bg-golden/90 hover:shadow-[0_0_20px_rgba(255,225,124,0.3)] transition-all duration-300"
+          >
+            Let's Talk
+            <ArrowUpRight size={14} />
+          </a>
 
           {/* Mobile Menu Toggle */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden rounded-full h-8 w-8 ml-1"
+          <button
+            className="md:hidden p-2 rounded-full text-white/60 hover:text-white hover:bg-white/10 transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
-          </Button>
+            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
-      </nav>
+      </motion.nav>
 
-      {/* Mobile Menu Content */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: -20 }}
+            initial={{ opacity: 0, scale: 0.95, y: -10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="absolute top-16 left-4 right-4 p-4 rounded-xl glass-panel md:hidden flex flex-col space-y-2 border shadow-2xl origin-top"
+            exit={{ opacity: 0, scale: 0.95, y: -10 }}
+            transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+            className="absolute top-[72px] left-4 right-4 bg-charcoal/80 backdrop-blur-2xl border border-white/[0.08] rounded-2xl shadow-[0_16px_48px_rgba(0,0,0,0.5)] md:hidden overflow-hidden"
           >
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className={`
-                    px-4 py-3 rounded-lg text-sm font-medium transition-colors
-                    ${activeSection === item.id ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:bg-secondary/50'}
-                 `}
-                onClick={(e) => handleNavClick(e, item.href)}
-              >
-                {item.label}
-              </a>
-            ))}
-            <a href="https://drive.google.com/file/d/1nR4CiBHpFhhQk5sPqsinCNcN7TAxlGDz/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="w-full">
-              <Button className="w-full mt-2 rounded-lg" size="sm">
-                View Resume
-              </Button>
-            </a>
+            <div className="p-5 flex flex-col gap-1">
+              {navItems.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className={`
+                    px-4 py-3 text-base font-satoshi font-medium transition-all duration-200 rounded-xl
+                    ${activeSection === item.id
+                      ? 'text-golden bg-white/[0.06]'
+                      : 'text-white/60 hover:text-white hover:bg-white/[0.04]'
+                    }
+                  `}
+                  onClick={(e) => handleNavClick(e, item.href)}
+                >
+                  {item.label}
+                </a>
+              ))}
+              <div className="flex gap-3 pt-4 border-t border-white/[0.06] mt-3">
+                <a
+                  href="https://drive.google.com/file/d/1j-HKUBbkxHGX5_af1U-tn55EvCw_bSIN/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 text-center py-3 text-sm font-satoshi font-medium text-white/60 border border-white/10 rounded-full hover:bg-white/5 transition-colors"
+                >
+                  Resume
+                </a>
+                <a
+                  href="#contact"
+                  onClick={(e) => handleNavClick(e, '#contact')}
+                  className="flex-1 text-center py-3 text-sm font-satoshi font-bold bg-golden text-charcoal rounded-full hover:bg-golden/90 transition-colors"
+                >
+                  Let's Talk
+                </a>
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

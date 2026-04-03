@@ -5,10 +5,12 @@ import TechStack from '@/components/TechStack';
 import Services from '@/components/Services';
 import VCNITIExperience from '@/components/VCNITIExperience';
 import Experience from '@/components/Experience';
+import Stats from '@/components/Stats';
 import Work from '@/components/Work';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
-import { useEffect, useRef } from 'react';
+import LoadingScreen from '@/components/LoadingScreen';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
@@ -19,40 +21,50 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 const Portfolio = () => {
   const main = useRef<HTMLDivElement>(null);
   const smoother = useRef<ScrollSmoother | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleLoadComplete = useCallback(() => {
+    setIsLoading(false);
+  }, []);
 
   useGSAP(() => {
-    // create the smooth scroller
-    smoother.current = ScrollSmoother.create({
-      smooth: 2,
-      effects: true,
-      wrapper: "#smooth-wrapper",
-      content: "#smooth-content",
-    });
+    if (!isLoading) {
+      smoother.current = ScrollSmoother.create({
+        smooth: 2,
+        effects: true,
+        wrapper: "#smooth-wrapper",
+        content: "#smooth-content",
+      });
+    }
 
     return () => {
       smoother.current?.kill();
     };
-  }, { scope: main });
+  }, { scope: main, dependencies: [isLoading] });
 
   return (
-    <div ref={main} className="min-h-screen overflow-x-hidden">
-      <Header />
-      <div id="smooth-wrapper">
-        <div id="smooth-content">
-          <main>
-            <Hero />
-            <VCNITIExperience />
-            <About />
-            <TechStack />
-            <Experience />
-            <Services />
-            <Work />
-            <Contact />
-          </main>
-          <Footer />
+    <>
+      {isLoading && <LoadingScreen onLoadComplete={handleLoadComplete} />}
+      <div ref={main} className={`min-h-screen overflow-x-hidden ${isLoading ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}`}>
+        <Header />
+        <div id="smooth-wrapper">
+          <div id="smooth-content">
+            <main>
+              <Hero />
+              <Stats />
+              <VCNITIExperience />
+              <About />
+              <TechStack />
+              <Experience />
+              <Services />
+              <Work />
+              <Contact />
+            </main>
+            <Footer />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

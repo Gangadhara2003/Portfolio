@@ -1,77 +1,98 @@
-import { Calendar, Briefcase, ExternalLink, ArrowRight } from 'lucide-react';
+import { Calendar, ArrowRight } from 'lucide-react';
 import ScrollAnimation from '@/components/ui/ScrollAnimation';
 
 const Experience = () => {
-    const experiences = [
-        {
-            company: 'VCNITI',
-            role: 'Tech, AI, & Platform Development Intern',
-            period: 'Nov 2025 - Present',
-            description: 'Leading the migration to a Headless Commerce architecture. Implementing AI-driven features and optimizing platform performance for scale.',
-            type: 'Internship',
-            link: 'https://vcniti.com'
-        },
-        {
-            company: 'TAP Academy',
-            role: 'Full Stack Web Development Intern',
-            period: 'Aug 2024 - Oct 2025',
-            description: 'Mastered Full Stack development specializing in the MERN stack. Built robust applications with React, Node.js, and MongoDB with a focus on clean code.',
-            type: 'Internship'
-        }
-    ];
+  const experiences = [
+    {
+      number: '01',
+      company: 'VCNITI',
+      role: 'Tech, AI, & Platform Development Intern',
+      period: 'Nov 2025 - Present',
+      description: 'Leading the migration to a Headless Commerce architecture. Implementing AI-driven features and optimizing platform performance for scale.',
+      type: 'Internship',
+      link: 'https://vcniti.com'
+    },
+    {
+      number: '02',
+      company: 'TAP Academy',
+      role: 'Full Stack Web Development Intern',
+      period: 'Aug 2024 - Oct 2025',
+      description: 'Mastered Full Stack development specializing in the MERN stack. Built robust applications with React, Node.js, and MongoDB with a focus on clean code.',
+      type: 'Internship'
+    }
+  ];
 
-    return (
-        <section id="experience" className="section-padding bg-background relative overflow-hidden">
-            <div className="container mx-auto container-padding max-w-4xl">
-                <ScrollAnimation direction="up">
-                    <div className="mb-12">
-                        <span className="text-sm font-bold tracking-widest text-primary uppercase">Career Path</span>
-                        <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground mt-2">
-                            Professional Journey
-                        </h2>
+  return (
+    <section id="experience" className="section-padding bg-charcoal relative overflow-hidden">
+      <div className="absolute inset-0 grid-bg opacity-5" />
+
+      <div className="container mx-auto container-padding relative z-10">
+        {/* Two-column layout: 1:2 ratio */}
+        <div className="grid lg:grid-cols-3 gap-16">
+          {/* Left - Sticky Title */}
+          <div className="lg:col-span-1">
+            <ScrollAnimation direction="right">
+              <div className="lg:sticky lg:top-32">
+                <span className="font-anton text-sm uppercase tracking-[0.3em] text-golden/70 mb-4 block">Career Path</span>
+                <h2 className="font-anton text-5xl md:text-6xl lg:text-7xl uppercase text-white leading-[0.9]">
+                  Professional<br />
+                  <span className="text-golden">Journey</span>
+                </h2>
+                <div className="w-16 h-1 bg-golden mt-6" />
+              </div>
+            </ScrollAnimation>
+          </div>
+
+          {/* Right - Experience Stack */}
+          <div className="lg:col-span-2 space-y-0">
+            {experiences.map((exp, index) => (
+              <ScrollAnimation key={index} direction="left" delay={index * 0.2}>
+                <div className="group relative py-12 border-b border-white/5 last:border-b-0">
+                  <div className="flex flex-col md:flex-row gap-8">
+                    {/* Number */}
+                    <div className="shrink-0">
+                      <span className="font-anton text-7xl md:text-8xl text-golden/20 group-hover:text-golden/80 transition-colors duration-500 leading-none">
+                        {exp.number}
+                      </span>
                     </div>
-                </ScrollAnimation>
 
-                <div className="relative border-l border-white/10 ml-3 md:ml-6 space-y-12 pb-12">
-                    {experiences.map((exp, index) => (
-                        <ScrollAnimation key={index} direction="left" delay={index * 0.2}>
-                            <div className="relative pl-8 md:pl-12 group">
-                                {/* Timeline Dot */}
-                                <div className="absolute -left-[5px] top-2 w-3 h-3 rounded-full bg-secondary border border-white/10 group-hover:bg-primary group-hover:scale-125 transition-all duration-300"></div>
+                    {/* Content */}
+                    <div className="flex-1 space-y-4">
+                      <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
+                        <h3 className="font-anton text-2xl md:text-3xl uppercase text-white group-hover:text-golden transition-colors duration-300">
+                          {exp.role}
+                        </h3>
+                        <span className="font-satoshi text-sm text-sage/50 shrink-0">
+                          {exp.period}
+                        </span>
+                      </div>
 
-                                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
-                                    <h3 className="text-xl font-bold font-display text-foreground group-hover:text-primary transition-colors">
-                                        {exp.role}
-                                    </h3>
-                                    <span className="text-sm font-mono text-muted-foreground self-start sm:self-auto mt-1 sm:mt-0">
-                                        {exp.period}
-                                    </span>
-                                </div>
+                      <div className="flex items-center gap-3">
+                        {exp.link ? (
+                          <a href={exp.link} target="_blank" rel="noopener noreferrer" className="font-satoshi text-base font-medium text-golden hover:underline underline-offset-4 flex items-center gap-1">
+                            {exp.company} <ArrowRight className="w-3 h-3 -rotate-45" />
+                          </a>
+                        ) : (
+                          <span className="font-satoshi text-base font-medium text-white/80">{exp.company}</span>
+                        )}
+                        <span className="text-xs px-3 py-1 font-satoshi font-medium uppercase tracking-wider border border-golden/20 text-golden/60 bg-golden/5">
+                          {exp.type}
+                        </span>
+                      </div>
 
-                                <div className="flex items-center gap-2 mb-4">
-                                    {exp.link ? (
-                                        <a href={exp.link} target="_blank" rel="noopener noreferrer" className="text-base font-semibold text-foreground hover:underline underline-offset-4 flex items-center">
-                                            {exp.company} <ArrowRight className="ml-1 w-3 h-3 -rotate-45" />
-                                        </a>
-                                    ) : (
-                                        <span className="text-base font-semibold text-foreground">{exp.company}</span>
-                                    )}
-                                    <span className="hidden sm:inline-block mx-2 text-muted-foreground/30">•</span>
-                                    <span className="text-xs px-2 py-0.5 rounded-full bg-secondary text-muted-foreground border border-white/5">
-                                        {exp.type}
-                                    </span>
-                                </div>
-
-                                <p className="text-muted-foreground leading-relaxed max-w-2xl">
-                                    {exp.description}
-                                </p>
-                            </div>
-                        </ScrollAnimation>
-                    ))}
+                      <p className="font-satoshi text-sage/60 leading-relaxed max-w-2xl">
+                        {exp.description}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-            </div>
-        </section>
-    );
+              </ScrollAnimation>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Experience;

@@ -1,3 +1,5 @@
+import ScrollAnimation from '@/components/ui/ScrollAnimation';
+
 const Stats = () => {
   const stats = [
     {
@@ -23,26 +25,26 @@ const Stats = () => {
   ];
 
   return (
-    <section className="py-12 border-y border-white/5 bg-secondary/20">
-      <div className="container mx-auto container-padding">
+    <section className="py-16 bg-charcoal border-y border-white/5 relative overflow-hidden">
+      <div className="absolute inset-0 grid-bg opacity-5" />
+      <div className="container mx-auto container-padding relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
-            <div
-              key={index}
-              className="text-center md:text-left space-y-2"
-            >
-              <div className="text-4xl md:text-5xl font-bold font-display text-primary tracking-tight">
-                {stat.number}
-              </div>
-              <div>
-                <div className="font-semibold text-foreground">
-                  {stat.label}
+            <ScrollAnimation key={index} direction="up" delay={index * 0.1}>
+              <div className="text-center md:text-left space-y-2 group">
+                <div className="font-anton text-5xl md:text-6xl text-golden tracking-tight group-hover:text-golden/80 transition-colors">
+                  {stat.number}
                 </div>
-                <div className="text-sm text-muted-foreground mt-1">
-                  {stat.description}
+                <div>
+                  <div className="font-satoshi font-bold text-white text-sm uppercase tracking-wider">
+                    {stat.label}
+                  </div>
+                  <div className="font-satoshi text-sm text-sage/50 mt-1">
+                    {stat.description}
+                  </div>
                 </div>
               </div>
-            </div>
+            </ScrollAnimation>
           ))}
         </div>
       </div>
