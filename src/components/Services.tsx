@@ -69,8 +69,8 @@ const Services = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           {services.map((service, index) => (
-            <ScrollAnimation key={index} direction="up" delay={index * 0.1}>
-              <div className={`p-8 ${service.bg} card-transition group min-h-[280px] flex flex-col border border-transparent hover:border-golden/20`}>
+            <ScrollAnimation key={index} direction="up" delay={index * 0.1} className="h-full">
+              <div className={`p-8 ${service.bg} card-transition group h-full flex flex-col border border-transparent hover:border-golden/20`}>
                 <div className={`h-14 w-14 flex items-center justify-center border ${service.iconBg} mb-8`}>
                   {service.icon}
                 </div>

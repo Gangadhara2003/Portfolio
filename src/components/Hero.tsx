@@ -7,7 +7,7 @@ const Hero = () => {
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 pb-20">
       {/* Grid Background */}
       <div className="absolute inset-0 grid-bg" />
-      
+
       {/* Gradient overlays */}
       <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-charcoal to-transparent z-[1]" />
       <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-charcoal to-transparent z-[1]" />
@@ -115,7 +115,7 @@ const Hero = () => {
                   <img
                     src={profileImage}
                     alt="Gangadhara K S"
-                    className="w-full h-full object-cover transition-all duration-500 grayscale hover:grayscale-0"
+                    className="w-full h-full object-cover transition-all duration-500 hover:grayscale-0"
                   />
                   {/* Overlay gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 to-transparent" />

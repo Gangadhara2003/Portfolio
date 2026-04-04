@@ -5,7 +5,7 @@ import TechStack from '@/components/TechStack';
 import Services from '@/components/Services';
 import VCNITIExperience from '@/components/VCNITIExperience';
 import Experience from '@/components/Experience';
-import Stats from '@/components/Stats';
+
 import Work from '@/components/Work';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
@@ -51,7 +51,7 @@ const Portfolio = () => {
           <div id="smooth-content">
             <main>
               <Hero />
-              <Stats />
+
               <VCNITIExperience />
               <About />
               <TechStack />

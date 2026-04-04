@@ -1,4 +1,4 @@
-import { Terminal, Database, Cpu, Globe } from 'lucide-react';
+import { Terminal, Database, Cpu, Globe, Lightbulb, Target } from 'lucide-react';
 import ScrollAnimation from '@/components/ui/ScrollAnimation';
 
 const About = () => {
@@ -8,7 +8,7 @@ const About = () => {
       title: "Backend Development",
       description: "Building scalable APIs with Node.js and Express.",
       skills: ["Node.js", "Express", "REST APIs", "GraphQL"],
-      span: "md:col-span-2", // wider card
+      span: "md:col-span-2",
       bg: "bg-[#f8f9fa] text-charcoal",
     },
     {
@@ -28,11 +28,27 @@ const About = () => {
       bg: "bg-charcoal text-white border border-white/10",
     },
     {
+      icon: <Lightbulb className="w-6 h-6" />,
+      title: "Critical Thinking",
+      description: "Analyzing complex systems and making informed technical decisions.",
+      skills: ["Root Cause Analysis", "Trade off Evaluation", "Code Review", "Debugging"],
+      span: "",
+      bg: "bg-charcoal text-white border border-white/10",
+    },
+    {
+      icon: <Target className="w-6 h-6" />,
+      title: "Problem Solving",
+      description: "Breaking down complex challenges into actionable, efficient solutions.",
+      skills: ["Optimization", "Design Patterns", "Agile Methodology", "Testing"],
+      span: "",
+      bg: "bg-[#f8f9fa] text-charcoal",
+    },
+    {
       icon: <Cpu className="w-6 h-6" />,
       title: "System Design",
       description: "Applying engineering principles to software architecture.",
       skills: ["Data Structures", "Algorithms", "System Design", "AWS"],
-      span: "md:col-span-2",
+      span: "md:col-span-3",
       bg: "bg-dark-gray text-white border border-white/10",
     },
   ];
@@ -72,10 +88,10 @@ const About = () => {
         </div>
 
         {/* Bento Grid */}
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-3 gap-5 [&>*]:min-h-[280px]">
           {expertises.map((item, idx) => (
-            <ScrollAnimation key={idx} direction="up" delay={idx * 0.1}>
-              <div className={`p-8 ${item.span} ${item.bg} card-transition group min-h-[220px] flex flex-col`}>
+            <ScrollAnimation key={idx} direction="up" delay={idx * 0.1} className="h-full">
+              <div className={`p-8 ${item.span} ${item.bg} card-transition group h-full flex flex-col`}>
                 <div className="flex items-start justify-between mb-6">
                   <div className={`h-12 w-12 flex items-center justify-center border ${item.bg.includes('f8f9fa') ? 'border-charcoal/10 text-charcoal' : 'border-golden/20 text-golden'}`}>
                     {item.icon}
