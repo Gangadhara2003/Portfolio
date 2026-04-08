@@ -31,7 +31,7 @@ const Hero = () => {
                 Building<br />
                 Scalable<br />
                 <span className="relative inline-block">
-                  <span className="relative z-10">Digital</span>
+                  <span className="relative z-10 text-charcoal">Digital</span>
                   <span className="absolute inset-y-0 -inset-x-3 bg-golden -rotate-1 z-0" style={{ top: '10%', bottom: '5%' }}></span>
                 </span>{' '}
                 <span className="text-golden">Solutions</span>

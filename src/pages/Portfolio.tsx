@@ -6,6 +6,7 @@ import Services from '@/components/Services';
 import VCNITIExperience from '@/components/VCNITIExperience';
 import Experience from '@/components/Experience';
 
+import BestWorks from '@/components/BestWorks';
 import Work from '@/components/Work';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
@@ -56,6 +57,7 @@ const Portfolio = () => {
               <About />
               <TechStack />
               <Experience />
+              <BestWorks />
               <Services />
               <Work />
               <Contact />

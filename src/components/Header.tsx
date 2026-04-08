@@ -13,7 +13,7 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      const sections = ['home', 'vcniti-experience', 'about', 'experience', 'services', 'work', 'contact'];
+      const sections = ['home', 'vcniti-experience', 'about', 'experience', 'best-works', 'services', 'work', 'contact'];
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -48,6 +48,7 @@ const Header = () => {
     { href: '#vcniti-experience', label: 'Internship', id: 'vcniti-experience' },
     { href: '#about', label: 'About', id: 'about' },
     { href: '#experience', label: 'Career', id: 'experience' },
+    { href: '#best-works', label: 'BestWorks', id: 'best-works', highlight: true },
     { href: '#services', label: 'Skills', id: 'services' },
     { href: '#work', label: 'Work', id: 'work' },
     { href: '#contact', label: 'Contact', id: 'contact' },
@@ -103,7 +104,14 @@ const Header = () => {
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
-              <span className="relative z-10">{item.label}</span>
+              <span className="relative z-10">
+                {item.highlight ? (
+                  <span className="relative inline-block">
+                    <span className="relative z-10 text-charcoal font-bold">{item.label}</span>
+                    <span className="absolute -inset-x-2 -inset-y-1 bg-golden -rotate-2 z-0" />
+                  </span>
+                ) : item.label}
+              </span>
             </a>
           ))}
         </div>
@@ -161,7 +169,12 @@ const Header = () => {
                   `}
                   onClick={(e) => handleNavClick(e, item.href)}
                 >
-                  {item.label}
+                  {item.highlight ? (
+                    <span className="relative inline-block">
+                      <span className="relative z-10 text-charcoal font-bold">{item.label}</span>
+                      <span className="absolute -inset-x-2 -inset-y-1 bg-golden -rotate-2 z-0" />
+                    </span>
+                  ) : item.label}
                 </a>
               ))}
               <div className="flex gap-3 pt-4 border-t border-white/[0.06] mt-3">

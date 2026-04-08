@@ -7,8 +7,8 @@ const Experience = () => {
       number: '01',
       company: 'VCNITI',
       role: 'Tech, AI, & Platform Development Intern',
-      period: 'Nov 2025 - Present',
-      description: 'Leading the migration to a Headless Commerce architecture. Implementing AI-driven features and optimizing platform performance for scale.',
+      period: 'Nov 2025 - Apr 2026',
+      description: 'Led the migration to a Headless Commerce architecture. Built the Admin Operations Command Center and Supplier Portal. Implemented AI-driven features, automated GST validation, real-time SLA tracking, and optimized platform performance for scale.',
       type: 'Internship',
       link: 'https://vcniti.com'
     },

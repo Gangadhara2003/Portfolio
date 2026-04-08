@@ -174,7 +174,7 @@ const VCNITIExperience = () => {
                 with Tech
               </h2>
               <p className="font-satoshi text-lg text-sage/70 mt-6 max-w-2xl mx-auto">
-                Leading the architectural transition to a high-performance headless commerce platform at{' '}
+                Led the architectural transition to a high-performance headless commerce platform at{' '}
                 <a href="https://vcniti.com" target="_blank" rel="noopener noreferrer" className="text-golden font-medium underline underline-offset-4 hover:text-golden/80 transition-colors">
                   VCNITI
                 </a>.

@@ -4,6 +4,8 @@ import { Skeleton } from '@/components/ui/skeleton';
 import foodDeliveryMockup from '@/assets/food-delivery-mockup.jpg';
 import vcnitiMockup from '@/assets/vcniti.png';
 import emailclassifierMockup from '@/assets/email-classifier-mockup.jpg';
+import adminDashboardMockup from '@/assets/admin dashboard.png';
+import supplierDashboardMockup from '@/assets/supplier dashboard.png';
 import ScrollAnimation from '@/components/ui/ScrollAnimation';
 
 const Work = () => {
@@ -15,6 +17,20 @@ const Work = () => {
       image: vcnitiMockup,
       technologies: ['Next.js', 'Shopify', 'Node.js', 'Firebase'],
       liveUrl: 'https://www.vcniti.com/',
+    },
+    {
+      title: 'VCNITI Admin Dashboard',
+      category: 'Operations Platform',
+      description: 'Central administrative command center for VCNITI\'s commerce ecosystem. Handles supplier onboarding with automated GST validation, master catalog management with bulk Excel/CSV uploads, algorithmic Shopify product sync, real-time SLA breach alerts, and centralized financial reconciliation.',
+      image: adminDashboardMockup,
+      technologies: ['Next.js', 'Node.js', 'Firebase', 'Shopify API', 'TypeScript'],
+    },
+    {
+      title: 'VCNITI Supplier Portal',
+      category: 'Vendor Management',
+      description: 'Streamlined vendor portal empowering suppliers with autonomous inventory management, real-time order fulfillment engine, dispatch tracking with live logistics updates, transparent payout analytics, and direct support channels to the admin team.',
+      image: supplierDashboardMockup,
+      technologies: ['Next.js', 'Node.js', 'Firebase', 'REST API', 'TypeScript'],
     },
     {
       title: 'AI Email Classifier',
@@ -58,7 +74,7 @@ const Work = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
-            <ScrollAnimation key={index} direction="up" delay={index * 0.1}>
+            <ScrollAnimation key={index} direction="up" delay={index * 0.1} className="h-full">
               <ProjectCard project={project} />
             </ScrollAnimation>
           ))}
@@ -72,14 +88,14 @@ const ProjectCard = ({ project }: { project: any }) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   return (
-    <div className="group bg-dark-gray border border-white/5 overflow-hidden hover:border-golden/30 transition-all duration-500 card-transition">
+    <div className="group bg-dark-gray border border-white/5 overflow-hidden hover:border-golden/30 transition-all duration-500 card-transition h-full flex flex-col">
       {/* Image */}
       <div className="relative aspect-video overflow-hidden">
         {!isImageLoaded && <Skeleton className="absolute inset-0 bg-white/5" />}
         <img
           src={project.image}
           alt={project.title}
-          className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-105 ${isImageLoaded ? 'opacity-100' : 'opacity-0'}`}
+          className={`w-full h-full object-contain transition-all duration-700 group-hover:scale-105 ${isImageLoaded ? 'opacity-100' : 'opacity-0'}`}
           onLoad={() => setIsImageLoaded(true)}
         />
 
@@ -99,7 +115,7 @@ const ProjectCard = ({ project }: { project: any }) => {
       </div>
 
       {/* Content */}
-      <div className="p-6">
+      <div className="p-6 flex flex-col flex-1">
         <div className="flex justify-between items-start mb-3">
           <div>
             <span className="text-xs font-satoshi font-medium text-golden uppercase tracking-wider mb-1 block">{project.category}</span>
@@ -109,7 +125,7 @@ const ProjectCard = ({ project }: { project: any }) => {
         <p className="font-satoshi text-sage/60 text-sm leading-relaxed mb-6 line-clamp-3">
           {project.description}
         </p>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 mt-auto">
           {project.technologies.map((tech: string) => (
             <span key={tech} className="text-xs font-satoshi px-3 py-1 bg-white/5 border border-white/10 text-white/60">
               {tech}
