@@ -119,7 +119,7 @@ const Header = () => {
         {/* Right side */}
         <div className="flex items-center gap-2 shrink-0">
           <a
-            href="https://drive.google.com/file/d/1j-HKUBbkxHGX5_af1U-tn55EvCw_bSIN/view?usp=sharing"
+            href="https://drive.google.com/file/d/1xDec_Z_GDbDUkpbUFcN65tkLab9PHMmY/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden md:inline-flex text-sm font-satoshi font-medium text-white/40 hover:text-white/80 transition-colors px-3"
@@ -179,7 +179,7 @@ const Header = () => {
               ))}
               <div className="flex gap-3 pt-4 border-t border-white/[0.06] mt-3">
                 <a
-                  href="https://drive.google.com/file/d/1j-HKUBbkxHGX5_af1U-tn55EvCw_bSIN/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1xDec_Z_GDbDUkpbUFcN65tkLab9PHMmY/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 text-center py-3 text-sm font-satoshi font-medium text-white/60 border border-white/10 rounded-full hover:bg-white/5 transition-colors"
