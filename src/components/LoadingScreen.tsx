@@ -60,7 +60,7 @@ const LoadingScreen = ({ onLoadComplete }: LoadingScreenProps) => {
             className="relative z-10 flex flex-col items-center gap-8"
           >
             <h1 className="font-anton text-5xl md:text-7xl text-white tracking-tight">
-              Gangadhara K S<span className="text-golden">Siddhanoor</span>
+              Gangadhara K S.<span className="text-golden"> Siddhanoor</span>
             </h1>
 
             <MorphingSquare
