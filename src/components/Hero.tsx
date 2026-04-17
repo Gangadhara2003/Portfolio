@@ -40,8 +40,8 @@ const Hero = () => {
 
             <ScrollAnimation direction="up" delay={0.2}>
               <p className="font-satoshi text-lg text-white/60 max-w-xl leading-relaxed mx-auto lg:mx-0">
-                Full-Stack Developer specializing in modern web architecture.
-                I craft high-performance applications using Next.js, Node.js, and React.
+                Full Stack Developer specializing in modern web architecture.
+                I craft high performance applications using Next.js, Node.js, and React.
               </p>
             </ScrollAnimation>
 
