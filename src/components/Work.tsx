@@ -6,10 +6,19 @@ import vcnitiMockup from '@/assets/vcniti.png';
 import emailclassifierMockup from '@/assets/email-classifier-mockup.jpg';
 import adminDashboardMockup from '@/assets/admin dashboard.png';
 import supplierDashboardMockup from '@/assets/supplier dashboard.png';
+import myResumeMockup from '@/assets/my-resume.png';
 import ScrollAnimation from '@/components/ui/ScrollAnimation';
 
 const Work = () => {
   const projects = [
+    {
+      title: 'My-Resume Tool',
+      category: 'AI SaaS Platform',
+      description: 'Full-stack AI resume builder that parses resumes, analyses JDs, rewrites bullets with missing ATS keywords, and compiles production-grade LaTeX PDFs in real time — powered by a 3-provider AI failover chain (Claude Sonnet 4 → NVIDIA NIM → Gemini).',
+      image: myResumeMockup,
+      technologies: ['React 19', 'Node.js', 'PostgreSQL', 'Redis', 'BullMQ', 'Docker', 'LaTeX', 'AWS Bedrock'],
+      comingSoon: true,
+    },
     {
       title: 'VCNITI Platform',
       category: 'Headless Commerce',
@@ -86,6 +95,57 @@ const Work = () => {
 
 const ProjectCard = ({ project }: { project: any }) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
+
+  if (project.comingSoon) {
+    return (
+      <div className="group relative bg-dark-gray border border-golden/20 overflow-hidden hover:border-golden/60 transition-all duration-500 card-transition h-full flex flex-col">
+        {/* Coming soon badge */}
+        <div className="absolute top-4 right-4 z-20 flex items-center gap-2 px-3 py-1.5 bg-golden text-charcoal font-anton text-xs uppercase tracking-widest">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full rounded-full bg-charcoal opacity-75 animate-ping" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-charcoal" />
+          </span>
+          Coming Soon
+        </div>
+
+        {/* Image with golden glow */}
+        <div className="relative aspect-video overflow-hidden border-b border-golden/10">
+          {!isImageLoaded && <Skeleton className="absolute inset-0 bg-white/5" />}
+          <div className="absolute -top-1/2 -right-1/2 w-full h-full bg-golden/10 rounded-full blur-3xl group-hover:bg-golden/20 transition-all duration-700 z-10 pointer-events-none" />
+          <img
+            src={project.image}
+            alt={project.title}
+            className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-105 ${isImageLoaded ? 'opacity-100' : 'opacity-0'}`}
+            onLoad={() => setIsImageLoaded(true)}
+          />
+          {/* Top accent line */}
+          <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-golden to-transparent z-20" />
+        </div>
+
+        {/* Content */}
+        <div className="p-6 flex flex-col flex-1">
+          <div className="flex justify-between items-start mb-3">
+            <div>
+              <span className="text-xs font-satoshi font-medium text-golden uppercase tracking-wider mb-1 block">{project.category}</span>
+              <h3 className="font-anton text-xl md:text-2xl uppercase text-white">
+                {project.title}
+              </h3>
+            </div>
+          </div>
+          <p className="font-satoshi text-sage/60 text-sm leading-relaxed mb-6 line-clamp-3">
+            {project.description}
+          </p>
+          <div className="flex flex-wrap gap-2 mt-auto">
+            {project.technologies.map((tech: string) => (
+              <span key={tech} className="text-xs font-satoshi px-3 py-1 bg-golden/5 border border-golden/20 text-golden/80">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="group bg-dark-gray border border-white/5 overflow-hidden hover:border-golden/30 transition-all duration-500 card-transition h-full flex flex-col">

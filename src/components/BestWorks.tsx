@@ -20,11 +20,17 @@ import {
   BadgeDollarSign,
   MessageSquare,
   ChevronDown,
+  Brain,
+  FileText,
+  Gauge,
+  ShieldAlert,
+  Wand2,
 } from 'lucide-react';
 import ScrollAnimation from '@/components/ui/ScrollAnimation';
 import vcnitiMockup from '@/assets/vcniti.png';
 import adminDashboardMockup from '@/assets/admin dashboard.png';
 import supplierDashboardMockup from '@/assets/supplier dashboard.png';
+import myResumeMockup from '@/assets/my-resume.png';
 
 const BestWorks = () => {
   const [expandedProject, setExpandedProject] = useState<number | null>(0);
@@ -57,6 +63,60 @@ const BestWorks = () => {
   const projects = [
     {
       number: '01',
+      category: 'AI SaaS Platform',
+      title: 'My-Resume Tool',
+      image: myResumeMockup,
+      comingSoon: true,
+      overview:
+        'A full-stack, production-grade AI resume builder that parses resumes, analyses job descriptions, rewrites bullet points with missing ATS keywords, and compiles pixel-perfect LaTeX PDFs in real time. Architected end-to-end — REST API + WebSocket + async job queue + React frontend — with a multi-provider AI layer and a Docker-sandboxed TeX Live compilation pipeline.',
+      accentColor: 'golden',
+      features: [
+        {
+          icon: <Brain className="w-4 h-4" />,
+          title: 'Multi-Provider AI Layer',
+          description:
+            'Resilient AI orchestration with smart task-aware routing and automatic failover, so the product keeps working even when a single provider rate-limits or goes down.',
+        },
+        {
+          icon: <FileText className="w-4 h-4" />,
+          title: 'LaTeX Compile Pipeline',
+          description:
+            'Dockerised TeX Live worker (--network none, 512m, 1 CPU) driven by BullMQ + Redis. Compile progress streamed live to the client via Redis Pub/Sub → WebSocket. Warm-up routine pre-compiles a dummy .tex on boot.',
+        },
+        {
+          icon: <Gauge className="w-4 h-4" />,
+          title: 'ATS Match Engine',
+          description:
+            'Computes a keyword-match percentage between resume and JD with a present/missing breakdown. Surgical bullet rewriter injects missing keywords as JSON diffs without mutating LaTeX structure.',
+        },
+        {
+          icon: <ShieldAlert className="w-4 h-4" />,
+          title: 'Honesty Guard',
+          description:
+            'A small verifier model audits AI output to flag any fabricated skills or achievements before they ship — preventing hallucinated experience from leaking into the final resume.',
+        },
+        {
+          icon: <Wand2 className="w-4 h-4" />,
+          title: 'LaTeX Sanitizer',
+          description:
+            'Post-processor that auto-corrects brace imbalance, unclosed environments, and preamble drift introduced by AI generation, plus an AI-powered fix-errors endpoint for compile failures.',
+        },
+        {
+          icon: <ShieldCheck className="w-4 h-4" />,
+          title: 'Production Hardening',
+          description:
+            'Helmet headers, CORS allowlist, JWT auth, bcrypt hashing, AI rate limits (20 req / 15 min / IP), graceful SIGTERM/SIGINT drain of in-flight BullMQ jobs, and a health endpoint covering DB, Redis, AI, and Docker.',
+        },
+      ],
+      techStack: {
+        frontend: ['React 19', 'Vite', 'Tailwind CSS', 'Monaco Editor', 'pdfjs-dist'],
+        backend: ['Node.js', 'Express.js', 'PostgreSQL', 'BullMQ', 'WebSocket'],
+        services: ['AWS Bedrock (Claude)', 'NVIDIA NIM', 'Google Gemini', 'AWS S3'],
+        infra: ['Docker', 'TeX Live', 'Redis Pub/Sub'],
+      },
+    },
+    {
+      number: '02',
       category: 'Headless Commerce',
       title: 'VCNITI Platform',
       image: vcnitiMockup,
@@ -103,7 +163,7 @@ const BestWorks = () => {
       },
     },
     {
-      number: '02',
+      number: '03',
       category: 'Operations Platform',
       title: 'VCNITI Admin Dashboard',
       image: adminDashboardMockup,
@@ -150,7 +210,7 @@ const BestWorks = () => {
       },
     },
     {
-      number: '03',
+      number: '04',
       category: 'Vendor Management',
       title: 'VCNITI Supplier Portal',
       image: supplierDashboardMockup,
@@ -199,6 +259,12 @@ const BestWorks = () => {
   ];
 
   const colorMap: Record<string, { accent: string; accentBg: string; accentBorder: string; accentText: string }> = {
+    golden: {
+      accent: 'text-golden',
+      accentBg: 'bg-golden/10',
+      accentBorder: 'border-golden/30',
+      accentText: 'text-golden/60',
+    },
     blue: {
       accent: 'text-blue-400',
       accentBg: 'bg-blue-500/10',
@@ -285,13 +351,24 @@ const BestWorks = () => {
                       >
                         {project.category}
                       </span>
-                      <h3
-                        className={`font-anton text-2xl md:text-3xl lg:text-4xl uppercase leading-[0.9] transition-colors duration-300 ${
-                          isExpanded ? 'text-golden' : 'text-white group-hover:text-white/80'
-                        }`}
-                      >
-                        {project.title}
-                      </h3>
+                      <div className="flex items-center gap-3 flex-wrap">
+                        <h3
+                          className={`font-anton text-2xl md:text-3xl lg:text-4xl uppercase leading-[0.9] transition-colors duration-300 ${
+                            isExpanded ? 'text-golden' : 'text-white group-hover:text-white/80'
+                          }`}
+                        >
+                          {project.title}
+                        </h3>
+                        {project.comingSoon && (
+                          <span className="flex items-center gap-1.5 px-2 py-1 bg-golden/10 border border-golden/30 text-golden font-anton text-[10px] uppercase tracking-widest">
+                            <span className="relative flex h-1.5 w-1.5">
+                              <span className="absolute inline-flex h-full w-full rounded-full bg-golden opacity-75 animate-ping" />
+                              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-golden" />
+                            </span>
+                            Coming Soon
+                          </span>
+                        )}
+                      </div>
                     </div>
 
                     {/* Expand Icon */}
@@ -315,13 +392,26 @@ const BestWorks = () => {
                       {/* Image + Overview */}
                       <div className="grid lg:grid-cols-2 gap-8 mb-10">
                         {/* Image */}
-                        <div className="relative overflow-hidden border border-white/5">
+                        <div className={`relative overflow-hidden border ${project.comingSoon ? 'border-golden/20' : 'border-white/5'}`}>
                           <img
                             src={project.image}
                             alt={project.title}
                             className="w-full h-full object-contain bg-dark-gray"
                           />
                           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-golden to-transparent" />
+
+                          {project.comingSoon && (
+                            <>
+                              <div className="absolute -top-1/2 -right-1/2 w-full h-full bg-golden/10 rounded-full blur-3xl pointer-events-none" />
+                              <div className="absolute top-4 right-4 flex items-center gap-2 px-3 py-1.5 bg-golden text-charcoal font-anton text-xs uppercase tracking-widest">
+                                <span className="relative flex h-2 w-2">
+                                  <span className="absolute inline-flex h-full w-full rounded-full bg-charcoal opacity-75 animate-ping" />
+                                  <span className="relative inline-flex rounded-full h-2 w-2 bg-charcoal" />
+                                </span>
+                                Coming Soon
+                              </div>
+                            </>
+                          )}
                         </div>
 
                         {/* Overview */}
