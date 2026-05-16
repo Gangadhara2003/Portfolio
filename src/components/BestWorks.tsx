@@ -3,6 +3,7 @@ import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   ArrowRight,
+  ExternalLink,
   Globe,
   Server,
   Smartphone,
@@ -66,7 +67,7 @@ const BestWorks = () => {
       category: 'AI SaaS Platform',
       title: 'My-Resume Tool',
       image: myResumeMockup,
-      comingSoon: true,
+      liveUrl: 'https://my-resume.in',
       overview:
         'A full-stack, production-grade AI resume builder that parses resumes, analyses job descriptions, rewrites bullet points with missing ATS keywords, and compiles pixel-perfect LaTeX PDFs in real time. Architected end-to-end — REST API + WebSocket + async job queue + React frontend — with a multi-provider AI layer and a Docker-sandboxed TeX Live compilation pipeline.',
       accentColor: 'golden',
@@ -359,14 +360,21 @@ const BestWorks = () => {
                         >
                           {project.title}
                         </h3>
-                        {project.comingSoon && (
-                          <span className="flex items-center gap-1.5 px-2 py-1 bg-golden/10 border border-golden/30 text-golden font-anton text-[10px] uppercase tracking-widest">
+                        {project.liveUrl && (
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="flex items-center gap-1.5 px-2 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-anton text-[10px] uppercase tracking-widest hover:bg-emerald-500/20 transition-colors"
+                          >
                             <span className="relative flex h-1.5 w-1.5">
-                              <span className="absolute inline-flex h-full w-full rounded-full bg-golden opacity-75 animate-ping" />
-                              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-golden" />
+                              <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
+                              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400" />
                             </span>
-                            Coming Soon
-                          </span>
+                            Live
+                            <ExternalLink className="w-3 h-3" />
+                          </a>
                         )}
                       </div>
                     </div>
@@ -392,7 +400,7 @@ const BestWorks = () => {
                       {/* Image + Overview */}
                       <div className="grid lg:grid-cols-2 gap-8 mb-10">
                         {/* Image */}
-                        <div className={`relative overflow-hidden border ${project.comingSoon ? 'border-golden/20' : 'border-white/5'}`}>
+                        <div className={`relative overflow-hidden border ${project.liveUrl ? 'border-emerald-500/20' : 'border-white/5'}`}>
                           <img
                             src={project.image}
                             alt={project.title}
@@ -400,17 +408,20 @@ const BestWorks = () => {
                           />
                           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-golden to-transparent" />
 
-                          {project.comingSoon && (
-                            <>
-                              <div className="absolute -top-1/2 -right-1/2 w-full h-full bg-golden/10 rounded-full blur-3xl pointer-events-none" />
-                              <div className="absolute top-4 right-4 flex items-center gap-2 px-3 py-1.5 bg-golden text-charcoal font-anton text-xs uppercase tracking-widest">
-                                <span className="relative flex h-2 w-2">
-                                  <span className="absolute inline-flex h-full w-full rounded-full bg-charcoal opacity-75 animate-ping" />
-                                  <span className="relative inline-flex rounded-full h-2 w-2 bg-charcoal" />
-                                </span>
-                                Coming Soon
-                              </div>
-                            </>
+                          {project.liveUrl && (
+                            <a
+                              href={project.liveUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="absolute top-4 right-4 flex items-center gap-2 px-3 py-1.5 bg-emerald-500 text-white font-anton text-xs uppercase tracking-widest hover:bg-emerald-600 transition-colors"
+                            >
+                              <span className="relative flex h-2 w-2">
+                                <span className="absolute inline-flex h-full w-full rounded-full bg-white opacity-75 animate-ping" />
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-white" />
+                              </span>
+                              Live
+                              <ExternalLink className="w-3.5 h-3.5" />
+                            </a>
                           )}
                         </div>
 

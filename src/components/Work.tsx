@@ -17,7 +17,7 @@ const Work = () => {
       description: 'Full-stack AI resume builder that parses resumes, analyses JDs, rewrites bullets with missing ATS keywords, and compiles production-grade LaTeX PDFs in real time — powered by a 3-provider AI failover chain (Claude Sonnet 4 → NVIDIA NIM → Gemini).',
       image: myResumeMockup,
       technologies: ['React 19', 'Node.js', 'PostgreSQL', 'Redis', 'BullMQ', 'Docker', 'LaTeX', 'AWS Bedrock'],
-      comingSoon: true,
+      liveUrl: 'https://my-resume.in',
     },
     {
       title: 'VCNITI Platform',
