@@ -14,9 +14,9 @@ const Work = () => {
     {
       title: 'My-Resume Tool',
       category: 'AI SaaS Platform',
-      description: 'Full-stack AI resume builder that parses resumes, analyses JDs, rewrites bullets with missing ATS keywords, and compiles production-grade LaTeX PDFs in real time — powered by a 3-provider AI failover chain (Claude Sonnet 4 → NVIDIA NIM → Gemini).',
+      description: 'Full-stack AI resume builder that parses resumes, analyses JDs, rewrites bullets with missing ATS keywords, and compiles production-grade LaTeX PDFs in real time — powered by a multi-provider AI failover chain with automatic fallback.',
       image: myResumeMockup,
-      technologies: ['React 19', 'Node.js', 'PostgreSQL', 'Redis', 'BullMQ', 'Docker', 'LaTeX', 'AWS Bedrock'],
+      technologies: ['React 19', 'Node.js', 'PostgreSQL', 'Redis', 'BullMQ', 'Docker', 'LaTeX', 'Multi-AI'],
       liveUrl: 'https://my-resume.in',
     },
     {

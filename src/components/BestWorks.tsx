@@ -112,7 +112,7 @@ const BestWorks = () => {
       techStack: {
         frontend: ['React 19', 'Vite', 'Tailwind CSS', 'Monaco Editor', 'pdfjs-dist'],
         backend: ['Node.js', 'Express.js', 'PostgreSQL', 'BullMQ', 'WebSocket'],
-        services: ['AWS Bedrock (Claude)', 'NVIDIA NIM', 'Google Gemini', 'AWS S3'],
+        services: ['Multi-Provider AI Layer', 'Cloud Storage (S3)'],
         infra: ['Docker', 'TeX Live', 'Redis Pub/Sub'],
       },
     },
